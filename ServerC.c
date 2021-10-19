@@ -40,13 +40,9 @@ while(1){
     }
     printf("Accept Succesful.\n");
 
-    printf("%s\n", Buf);
-    err = send(cSocket, " ", 1, 0);
-
     id = fork();
     if(id == 0){    //Fork Child
-
-    
+        
     int offPort = SERVERPORT;
 
     char cSockString[(int)((ceil(log10(cSocket))+1)*sizeof(char))];
