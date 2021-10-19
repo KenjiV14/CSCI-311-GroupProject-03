@@ -46,6 +46,22 @@ while(1){
     id = fork();
     if(id == 0){    //Fork Child
 
+    
+    int offPort = SERVERPORT;
+
+    char cSockString[(int)((ceil(log10(cSocket))+1)*sizeof(char))];
+    char offPortString[(int)((ceil(log10(cSocket))+1)*sizeof(char))];
+
+    sprintf(cSockString, "%d", cSocket);
+    sprintf(offPortString, "%d", offPort);
+
+    printf("Child Created: Port - %d\n", offPort);
+    err = exec("./ServerG", "ServerG", cSockString, offPortString, (char*)NULL);
+    if(err = -1){
+        perror("soServerC: exec Failed.\n");
+        exit(5)
+    }
+        
     }else if(id < 0){
         perror("socServerC: Fork Failed.\n");
         exit(5);
