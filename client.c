@@ -11,12 +11,18 @@ char* getIdMove(int id) {
 }
 
 int main(int argc, char *argv[]) {
+    // Variables for Server
     int err, cSocket;
     struct sockaddr_in mainServAddress;
     struct sockaddr_in gameServAddress;
     char Buf[BUFL];
     char fromClient[BUFL];
     int cSocLen;
+
+    // Variables for Game
+    char playerMove[BUFL];
+    int roundState;
+    int waitBuffer = 0;
 
     // Connection to Main Server
     memset(&mainServAddress, 0, sizeof(struct sockaddr_in));
@@ -61,49 +67,26 @@ int main(int argc, char *argv[]) {
     err =
         connect(cSocket, (struct sockaddr *)&gameServAddress, sizeof(struct sockaddr_in));
     if (err == -1) {
-        perror("socClient: connect failed");
+        perror("socClient: connect failed\n");
         exit(2);
     }
 
-    
-
-    printf("%s\n", Buf);
-    err = send(cSocket, " ", 1, 0);
-
-    while (1) {
-        // Receive game status from Server
-        err = recv(cSocket, Buf, BUFL, 0);
-        if (err == -1) {
-            perror("socClient: read failed");
-            exit(5);
-        }
-        printf("%s", Buf);
-        err = send(cSocket, " ", 1, 0);
-        
-        // Receive input options from Server
-        err = recv(cSocket, Buf, BUFL, 0);
-        if (err == -1) {
-            perror("socClient: read failed");
-            exit(5);
-        }
-        printf("%s", Buf);
-        // err = send(cSocket, " ", 1, 0);
-
-        // Get input from user
-        scanf("%s", fromClient);
-
-        // Send input to server
-        err = send(cSocket, fromClient, strlen(fromClient) + 1, 0);
-
-        // Server sends info about win/lose/tie
-        err = recv(cSocket, Buf, BUFL, 0);
-        if (err == -1) {
-            perror("socClient: read failed");
-            exit(5);
-        }
-        printf("%s\n", Buf);
-        err = send(cSocket, " ", 1, 0);
+    err = recv(cSocket, Buf, BUFL, 0);
+    if(err == -1){
+        perror("socClient: recv Failed.\n")
     }
+
+    // RockPaperScissorGame Code
+    while(1){
+
+        printf("Choose Move: [R]ock, [P]aper, [S]cissor --> ");
+        scanf("%s", Buf);
+
+        cpyString(playerMove, Buf);
+        sndString(cSocket, Buf);
+
+    }
+
     /*
         err = send(cSocket, "Connection made!\n", 17, 0);
         printf("socClient: number of bytes sent to server: %d\n", err);
@@ -114,6 +97,6 @@ int main(int argc, char *argv[]) {
         }
         printf("socClient: msg from server: %s\n", Buf);
     */
-    close(cSocket);
+
     exit(0);
 }

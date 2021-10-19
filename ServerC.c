@@ -1,7 +1,7 @@
 #include "rpsGame.h"
 
 int main(int argc, char *argv[]) {
-    int err, sSocket, cSocket;
+    int err, id, sSocket, cSocket;
     struct sockaddr_in sAddr;
     struct sockaddr_in cAddr;
     char Buf[BUFL];
@@ -32,6 +32,7 @@ int main(int argc, char *argv[]) {
     printf("Server is awaiting connections\n");
     // Port bound for listening. We can fork from here
 
+while(1){
     cSocket = accept(sSocket, (struct sockaddr *)&cAddr, &cSocLen);
     if (cSocket == -1) {
         perror("socServerC: accept failed\n");
@@ -39,7 +40,19 @@ int main(int argc, char *argv[]) {
     }
     printf("Accept Succesful.\n");
 
-    
+    printf("%s\n", Buf);
+    err = send(cSocket, " ", 1, 0);
+
+    id = fork();
+    if(id == 0){    //Fork Child
+
+    }else if(id < 0){
+        perror("socServerC: Fork Failed.\n");
+        exit(5);
+    }
+}
+
+
     /* Test starts here */
     // SDend instructions to client
 /*    err = send(cSocket,
