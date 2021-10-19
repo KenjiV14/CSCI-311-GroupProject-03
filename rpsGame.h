@@ -1,10 +1,10 @@
-/*********************************************************
-* Team Members: Steven Severin, Kenji Vang
+/****************************************************************
+* Team Members: Steven Severin, Kenji Vang, Florentine Niyongere
 * CSCI - 311
 * Star-Id: , ka7354jz
 * Date: 10/20/2021
 * rpsGame.h
-*********************************************************/
+****************************************************************/
 
 #ifndef RPSGAME_H
 #define RPSGAME_H
