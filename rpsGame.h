@@ -1,7 +1,7 @@
 /****************************************************************
 * Team Members: Steven Severin, Kenji Vang, Florentine Niyongere
 * CSCI - 311
-* Star-Id: bn5377xd, ka7354jz
+* Star-Id: bn5377xd, ka7354jz, ff7308hk
 * Date: 10/20/2021
 * rpsGame.h
 ****************************************************************/
