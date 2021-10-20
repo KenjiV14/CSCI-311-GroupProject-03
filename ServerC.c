@@ -52,7 +52,7 @@ while(1){
     sprintf(offPortString, "%d", offPort);
 
     printf("Child Created: Port - %d\n", offPort);
-    err = exec("./ServerG", "ServerG", cSockString, offPortString, (char*)NULL);
+    err = execl("./ServerG", "ServerG", cSockString, offPortString, (char*)NULL);
     if(err = -1){
         perror("soServerC: exec Failed.\n");
         exit(5);
