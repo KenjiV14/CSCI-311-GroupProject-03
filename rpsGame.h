@@ -20,12 +20,13 @@
 #include <errno.h>
 #include <time.h>
 #include <math.h>
+#include <ctype.h>
 
 #define BUFL 100
 #define SERVERPORT 31200
-#define SERVERPORTSTR "45756"
+#define SERVERPORTSTR "31200"
 #define SERVERIP "199.17.28.80"
-#define SERVERNAME ""
+#define SERVERNAME "ahscentos"
 
 void sndInt(int socket, int data);
 
