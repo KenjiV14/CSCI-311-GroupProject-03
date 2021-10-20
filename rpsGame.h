@@ -14,13 +14,13 @@
 #include <string.h>
 #include <sys/socket.h>
 #include <sys/types.h>
-#include <unisted.h>
+#include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <errno.h>
 #include <time.h>
 
-#define BUFLEN 100
+#define BUFL 100
 #define SERVERPORT 45756
 #define SERVERPORTSTR "45756"
 #define SERVERIP "199.17.28.80"
