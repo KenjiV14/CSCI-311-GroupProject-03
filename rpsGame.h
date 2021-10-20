@@ -26,8 +26,8 @@
 #define SERVERIP "199.17.28.80"
 #define SERVERNAME ""
 
-void sendInt(int socket, int data);
+void sndInt(int socket, int data);
 
-void sendString(int socket, char* data);
+void sndString(int socket, char* data);
 
 #endif
