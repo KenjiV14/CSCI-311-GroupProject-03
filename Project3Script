@@ -1,0 +1,204 @@
+Script started on Wed 20 Oct 2021 03:42:15 PM CDT
+]0;ka7354jz@csci4:~[?1034h[ka7354jz@csci4 ~]$ ./client
+This is a game of Rock, Paper, Scissors.
+We will play the best 4 of 7
+
+Choose Move:
+ 1) Rock
+ 2) Paper
+ 3) Scissors
+ --> 1
+
+
+You chose Rock
+Server chose Scissors
+
+Player wins
+The Server has 0 wins, Player has 1 wins
+
+Choose Move:
+ 1) Rock
+ 2) Paper
+ 3) Scissors
+ --> 74755
+
+Invalid choice, please choose either 1, 2, or 3
+Choose Move:
+ 1) Rock
+ 2) Paper
+ 3) Scissors
+ --> 2
+
+
+You chose Paper
+Server chose Rock
+
+Player wins
+The Server has 0 wins, Player has 2 wins
+
+Choose Move:
+ 1) Rock
+ 2) Paper
+ 3) Scissors
+ --> 3
+
+
+You chose Scissors
+Server chose Scissors
+
+Tie
+The Server has 0 wins, Player has 2 wins
+
+Choose Move:
+ 1) Rock
+ 2) Paper
+ 3) Scissors
+ --> 1
+
+
+You chose Rock
+Server chose Rock
+
+Tie
+The Server has 0 wins, Player has 2 wins
+
+Choose Move:
+ 1) Rock
+ 2) Paper
+ 3) Scissors
+ --> 2
+
+
+You chose Paper
+Server chose Paper
+
+Tie
+The Server has 0 wins, Player has 2 wins
+
+Choose Move:
+ 1) Rock
+ 2) Paper
+ 3) Scissors
+ --> 3
+
+
+You chose Scissors
+Server chose Scissors
+
+Tie
+The Server has 0 wins, Player has 2 wins
+
+Choose Move:
+ 1) Rock
+ 2) Paper
+ 3) Scissors
+ --> 2
+
+
+You chose Paper
+Server chose Scissors
+
+Server wins
+The Server has 1 wins, Player has 2 wins
+
+Choose Move:
+ 1) Rock
+ 2) Paper
+ 3) Scissors
+ --> 3
+
+
+You chose Scissors
+Server chose Rock
+
+Server wins
+The Server has 2 wins, Player has 2 wins
+
+Choose Move:
+ 1) Rock
+ 2) Paper
+ 3) Scissors
+ --> 1
+
+
+You chose Rock
+Server chose Rock
+
+Tie
+The Server has 2 wins, Player has 2 wins
+
+Choose Move:
+ 1) Rock
+ 2) Paper
+ 3) Scissors
+ --> 1
+
+
+You chose Rock
+Server chose Paper
+
+Server wins
+The Server has 3 wins, Player has 2 wins
+
+Choose Move:
+ 1) Rock
+ 2) Paper
+ 3) Scissors
+ --> 3
+
+
+You chose Scissors
+Server chose Scissors
+
+Tie
+The Server has 3 wins, Player has 2 wins
+
+Choose Move:
+ 1) Rock
+ 2) Paper
+ 3) Scissors
+ --> 2
+
+
+You chose Paper
+Server chose Paper
+
+Tie
+The Server has 3 wins, Player has 2 wins
+
+Choose Move:
+ 1) Rock
+ 2) Paper
+ 3) Scissors
+ --> 1
+
+
+You chose Rock
+Server chose Scissors
+
+Player wins
+The Server has 3 wins, Player has 3 wins
+
+Choose Move:
+ 1) Rock
+ 2) Paper
+ 3) Scissors
+ --> 3
+
+
+You chose Scissors
+Server chose Rock
+
+Server wins
+The Server has 4 wins, Player has 3 wins
+
+Server wins. GG!
+Better luck next time!
+Press 1 to exit
+1
+Press 1 to exit
+
+]0;ka7354jz@csci4:~[ka7354jz@csci4 ~]$ exit
+exit
+
+Script done on Wed 20 Oct 2021 03:43:49 PM CDT

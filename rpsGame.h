@@ -1,10 +1,10 @@
-/*********************************************************
-* Team Members: Steven Severin, Kenji Vang
+/****************************************************************
+* Team Members: Steven Severin, Kenji Vang, Florentine Niyongere
 * CSCI - 311
-* Star-Id: , ka7354jz, 
+* Star-Id: bn5377xd, ka7354jz
 * Date: 10/20/2021
 * rpsGame.h
-*********************************************************/
+****************************************************************/
 
 #ifndef RPSGAME_H
 #define RPSGAME_H
@@ -19,17 +19,23 @@
 #include <stdio.h>
 #include <errno.h>
 #include <time.h>
-#include <math.h>
-#include <ctype.h>
 
 #define BUFL 100
-#define SERVERPORT 31200
-#define SERVERPORTSTR "31200"
+#define SERVERPORT 45756
+#define SERVERPORTSTR "45756"
 #define SERVERIP "199.17.28.80"
-#define SERVERNAME "ahscentos"
+#define SERVERNAME ""
 
 void sndInt(int socket, int data);
 
 void sndString(int socket, char* data);
+
+int genRandGame();
+
+int getServerPlay();
+
+char *getIdMove(int id);
+
+int determineWinner(int s, int c);
 
 #endif

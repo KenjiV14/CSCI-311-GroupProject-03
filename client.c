@@ -1,30 +1,13 @@
 #include "rpsGame.h"
 
-// Name of move
-char* getIdMove(int id) {
-    switch(id){
-        case 0: return "Rock";
-        case 1: return "Paper";
-        case 2: return "Scissors";
-        default: return "Unknown";
-    }
-}
-
 int main(int argc, char *argv[]) {
     // Variables for Server
-    int err, cSocket;
+    int err, cSocket, validMove, received = 1;
     struct sockaddr_in mainServAddress;
-    struct sockaddr_in gameServAddress;
     char Buf[BUFL];
-    char fromClient[BUFL];
-    int cSocLen;
+    char sBuf[BUFL];
 
-    // Variables for Game
-    char playerMove[BUFL];
-    int roundState;
-    int waitBuffer = 0;
-
-    // Connection to Main Server
+    // Connection to Server
     memset(&mainServAddress, 0, sizeof(struct sockaddr_in));
     mainServAddress.sin_family = AF_INET;
     mainServAddress.sin_port = htons(SERVERPORT);
@@ -35,68 +18,68 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
 
-    err =
-        connect(cSocket, (struct sockaddr *)&mainServAddress, sizeof(struct sockaddr_in));
+    err = connect(cSocket, (struct sockaddr *)&mainServAddress,
+                  sizeof(struct sockaddr_in));
     if (err == -1) {
         perror("socClient: connect failed");
         exit(2);
     }
     // Server connection made. Game can be played.
 
-    // Receive instructions from Server
-    err = recv(cSocket, Buf, BUFL, 0);
+    // Receive game instructions from Server
+    err = recv(cSocket, sBuf, BUFL, 0);
     if (err == -1) {
         perror("socClient: read failed");
         exit(5);
     }
-
-    // Connection to Game Server
-    memset(&mainServAddress, 0, sizeof(struct sockaddr_in));
-    gameServAddress.sin_family = AF_INET;
-    gameServAddress.sin_port = htons(atoi(Buf));
-    gameServAddress.sin_addr.s_addr = inet_addr(SERVERIP);
-
-    close(cSocket);
-
-    cSocket = socket(AF_INET, SOCK_STREAM, 0);
-    if (cSocket == -1) {
-        perror("socClient: socket creation failed");
-        exit(1);
-    }
-
-    err =
-        connect(cSocket, (struct sockaddr *)&gameServAddress, sizeof(struct sockaddr_in));
-    if (err == -1) {
-        perror("socClient: connect failed\n");
-        exit(2);
-    }
-
-    err = recv(cSocket, Buf, BUFL, 0);
-    if(err == -1){
-        perror("socClient: recv Failed.\n")
-    }
+    printf("%s\n", sBuf);
+    // Send blank to acknowledge
+    sndString(cSocket, " ");
 
     // RockPaperScissorGame Code
-    while(1){
-
-        printf("Choose Move: [R]ock, [P]aper, [S]cissor --> ");
-        scanf("%s", Buf);
-
-        cpyString(playerMove, Buf);
-        sndString(cSocket, Buf);
-
-    }
-
-    /*
-        err = send(cSocket, "Connection made!\n", 17, 0);
-        printf("socClient: number of bytes sent to server: %d\n", err);
-        err = recv(cSocket, Buf, BUFL, 0);
+    while (received > 0) {
+        // Start of turn
+        validMove = 0;
+        // Receive round instructions from Server
+        err = recv(cSocket, sBuf, BUFL, 0);
         if (err == -1) {
             perror("socClient: read failed");
             exit(5);
         }
-        printf("socClient: msg from server: %s\n", Buf);
-    */
+        while (!(validMove)) {
+            // Print round instructions
+            printf("%s", sBuf);
+            scanf("%s", Buf);
+            // Validate move
+            if (atoi(Buf) == 1 | atoi(Buf) == 2 | atoi(Buf) == 3) {
+                validMove = 1;
+            } else {
+                printf("\nInvalid choice, please choose either 1, 2, or 3\n");
+            }
+        }
+        // Sent move
+        sndString(cSocket, Buf);
+
+        // Repeat back moves
+        err = recv(cSocket, sBuf, BUFL, 0);
+        if (err == -1) {
+            perror("socClient: read failed");
+            exit(5);
+        }
+        printf("%s\n", sBuf);
+        // Send blank to acknowledge
+        sndString(cSocket, " ");
+
+        // Get results
+        err = recv(cSocket, sBuf, BUFL, 0);
+        if (err == -1) {
+            perror("socClient: read failed");
+            exit(5);
+        }
+        printf("%s\n", sBuf);
+        // Send blank to acknowledge
+        sndString(cSocket, " ");
+    }
 
     exit(0);
 }
