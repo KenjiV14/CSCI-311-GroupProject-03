@@ -42,7 +42,7 @@ while(1){
 
     id = fork();
     if(id == 0){    //Fork Child
-        
+
     int offPort = SERVERPORT;
 
     char cSockString[(int)((ceil(log10(cSocket))+1)*sizeof(char))];
@@ -55,12 +55,12 @@ while(1){
     err = exec("./ServerG", "ServerG", cSockString, offPortString, (char*)NULL);
     if(err = -1){
         perror("soServerC: exec Failed.\n");
-        exit(5)
+        exit(5);
     }
-        
+
     }else if(id < 0){
         perror("socServerC: Fork Failed.\n");
-        exit(5);
+        exit(6);
     }
 }
 
