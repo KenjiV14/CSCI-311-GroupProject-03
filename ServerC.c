@@ -46,7 +46,7 @@ while(1){
     int offPort = SERVERPORT;
 
     char cSockString[(int)((ceil(log10(cSocket))+1)*sizeof(char))];
-    char offPortString[(int)((ceil(log10(cSocket))+1)*sizeof(char))];
+    char offPortString[(int)((ceil(log10(offPort))+1)*sizeof(char))];
 
     sprintf(cSockString, "%d", cSocket);
     sprintf(offPortString, "%d", offPort);
